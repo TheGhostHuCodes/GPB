@@ -12,6 +12,7 @@ import (
 
 	"github.com/TheGhostHuCodes/GPB/trace"
 	"github.com/stretchr/gomniauth"
+	"github.com/stretchr/gomniauth/providers/github"
 	"github.com/stretchr/gomniauth/providers/google"
 	"github.com/stretchr/objx"
 )
@@ -69,6 +70,8 @@ func main() {
 	gomniauth.WithProviders(
 		google.New(c.Provider["Google"].ClientId, c.Provider["Google"].ClientSecret,
 			"http://localhost:8080/auth/callback/google"),
+		github.New(c.Provider["Github"].ClientId, c.Provider["Github"].ClientSecret,
+			"http://localhost:8080/auth/callback/github"),
 	)
 
 	r := newRoom()
